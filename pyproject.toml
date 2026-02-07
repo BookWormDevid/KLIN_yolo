@@ -1,0 +1,60 @@
+[project]
+name = "klin-yolo"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "alembic>=1.18.3",
+    "dishka>=1.7.2",
+    "faststream>=0.6.6",
+    "litestar>=2.19.0",
+    "python-dotenv>=1.2.1",
+    "sqlalchemy>=2.0.46",
+    "torch>=2.10.0",
+    "ultralytics>=8.4.12",
+]
+
+
+
+[dependency-groups]
+dev = [
+    "mypy>=1.5.8",
+    "pre-commit>=4.5.1",
+    "ruff>=0.14.10",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu128" }]
+torchvision = [{ index = "pytorch-cu128" }]
+
+
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+strict_optional = true
+exclude = ["data", "models", "videomae_results", "mlflow", "mlruns"]
+plugins = []
+
+
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # bugbear
+    "UP", # pyupgrade
+]
+ignore = ["E501"]
