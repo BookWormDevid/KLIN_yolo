@@ -39,12 +39,6 @@ class YoloService:
             # callback
             print(f"✅ Успех : {yolo.result}")
 
-        except Exception as e:
-            yolo.result = str(e)
-            yolo.state = ProcessingState.ERROR
-            # callback
-            print(f"❌ Ошибка : {yolo.result}")
-
         finally:
             await self._yolo_repository.update(yolo)
 

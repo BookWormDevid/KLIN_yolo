@@ -7,10 +7,9 @@ from sqlalchemy.orm import Mapped, mapped_column
 from app.models.base import BaseModel
 
 
-class ProcessingState(str, enum.Enum):
+class ProcessingState(enum.StrEnum):
     PENDING = "PENDING"
     FINISHED = "FINISHED"
-    ERROR = "ERROR"
 
 
 class YoloModel(BaseModel):
@@ -20,6 +19,6 @@ class YoloModel(BaseModel):
 
     yolo_result: Mapped[dict] = mapped_column(JSONB(), default={})
 
-    state: Mapped[ProcessingState] = mapped_column(String(), default="ERROR")
+    state: Mapped[ProcessingState] = mapped_column(String())
 
     result: Mapped[str] = mapped_column(default="Дождитесь завершения проверки.")

@@ -5,12 +5,12 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "alembic>=1.18.3",
+    "alembic>=1.17.2",
     "dishka>=1.7.2",
-    "faststream>=0.6.6",
-    "litestar>=2.19.0",
+    "faststream[cli, rabbit]>=0.6.3",
+    "litestar[structlog]>=2.18.0",
     "python-dotenv>=1.2.1",
-    "sqlalchemy>=2.0.46",
+    "sqlalchemy[asyncio]>=2.0.44",
     "torch>=2.10.0",
     "ultralytics>=8.4.12",
 ]
@@ -19,7 +19,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "mypy>=1.5.8",
+    "mypy>=1.18.2",
     "pre-commit>=4.5.1",
     "ruff>=0.14.10",
 ]
@@ -36,7 +36,7 @@ torchvision = [{ index = "pytorch-cu128" }]
 
 
 [tool.mypy]
-python_version = "3.10"
+python_version = "3.12"
 warn_return_any = true
 warn_unused_configs = true
 strict_optional = true
@@ -47,7 +47,7 @@ plugins = []
 
 [tool.ruff]
 line-length = 88
-target-version = "py310"
+target-version = "py312"
 
 [tool.ruff.lint]
 select = [
